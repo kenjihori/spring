@@ -33,7 +33,7 @@
 	<mvc:annotation-driven validator="validator">
 	</mvc:annotation-driven>
 
-	<context:component-scan base-package="com.myproject" />
+	<context:component-scan base-package="com.mycomp.myapp" />
 	<aop:aspectj-autoproxy />
 	
 	<!--  Message Resource -->
@@ -74,12 +74,11 @@
 	</beans:bean>
 	
 	<!-- MyBatis + PostgreSQL -->
-	<mybatis:scan base-package="com.myproject.domain.mapper" />
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="driverClassName" value="org.postgresql.Driver" />
-		<beans:property name="url" value="jdbc:postgresql://localhost:5432/bookdb" />
-		<beans:property name="username" value="postgres" />
-		<beans:property name="password" value="horiguchi03" />
+	<mybatis:scan base-package="com.mycomp.myapp.domain.mapper" />
+	<beans:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<beans:property name="jndiName">
+			<beans:value>jdbc/__default</beans:value>
+		</beans:property>
 	</beans:bean>
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
