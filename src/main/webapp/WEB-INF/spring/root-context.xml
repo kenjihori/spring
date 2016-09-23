@@ -3,6 +3,10 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xmlns:sec="http://www.springframework.org/schema/security"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
@@ -12,6 +16,14 @@
     	http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc
+		http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://mybatis.org/schema/mybatis-spring
+		http://mybatis.org/schema/mybatis-spring.xsd
+		http://www.springframework.org/schema/security
+    	http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
@@ -20,6 +32,7 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven validator="validator">
 	</mvc:annotation-driven>
+
 	<context:component-scan base-package="com.myproject" />
 	<aop:aspectj-autoproxy />
 	
@@ -45,7 +58,7 @@
 	
 	<!-- Thymeleaf -->
 	<beans:bean id="templateResolver"
-			class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver"> <!-- org org.thymeleaf.templateresolver.ServletContextTemplateResolver -->
+			class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
 		<beans:property name="prefix" value="/WEB-INF/templates/" />
 		<beans:property name="suffix" value=".html" />
 		<beans:property name="templateMode" value="HTML5" />
@@ -60,5 +73,22 @@
     	<beans:property name="order" value="1" />
 	</beans:bean>
 	
+	<!-- MyBatis + PostgreSQL -->
+	<mybatis:scan base-package="com.myproject.domain.mapper" />
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="org.postgresql.Driver" />
+		<beans:property name="url" value="jdbc:postgresql://localhost:5432/bookdb" />
+		<beans:property name="username" value="postgres" />
+		<beans:property name="password" value="horiguchi03" />
+	</beans:bean>
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="configLocation" value="classpath:/mybatis-config.xml" />
+	</beans:bean>
+	<tx:annotation-driven />
+	
 </beans:beans>
-
