@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Bean Validation Sample Confirm 4</h2>
+
+<div th:object="${validationSampleForm4}">
+
+期日：
+<span th:text="${selectedPeriod}"></span> <span th:text="${#dates.format(validationSampleForm4.dueDate, 'yyyy/MM/dd')}" ></span>
+
+</div>
+</body>
+</html>

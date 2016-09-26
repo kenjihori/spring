@@ -33,7 +33,7 @@
 	<mvc:annotation-driven validator="validator">
 	</mvc:annotation-driven>
 
-	<context:component-scan base-package="com.mycomp.myapp" />
+	<context:component-scan base-package="com.mycompany.myapp" />
 	<aop:aspectj-autoproxy />
 	
 	<!--  Message Resource -->
@@ -41,8 +41,7 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="basenames">
 			<beans:list>
-				<beans:value>messages</beans:value>
-				<beans:value>validation-messages</beans:value>
+				<beans:value>messages/application-messages</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -74,7 +73,7 @@
 	</beans:bean>
 	
 	<!-- MyBatis + PostgreSQL -->
-	<mybatis:scan base-package="com.mycomp.myapp.domain.mapper" />
+	<mybatis:scan base-package="com.mycompany.myapp.domain.mapper" />
 	<beans:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<beans:property name="jndiName">
 			<beans:value>jdbc/__default</beans:value>

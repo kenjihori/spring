@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/css/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Bean Validation Sample 4</h2>
+<form role="form" th:action="@{/validationSample4}" th:object="${validationSampleForm4}" method="post">
+
+期日：
+<label th:each="item : ${radios}">
+<input type="radio" th:value="${item.key}" th:text="${item.value}" th:field="*{period}" th:errorclass="fieldError" />
+</label>
+<input type="date" id="dueDate" name="dueDate" th:field="*{dueDate}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('period')}" th:errors="*{period}" class="fieldErrorMessage"></span>
+<span th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}" class="fieldErrorMessage"></span>
+<br />
+
+<button type="submit">Confirm</button>
+
+</form>
+</body>
+</html>

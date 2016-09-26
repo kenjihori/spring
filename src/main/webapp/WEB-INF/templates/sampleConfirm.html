@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Bean Validation Sample</h2>
+
+<div th:object="${sampleForm}">
+
+郵便番号：
+<span th:text="*{zipCode}" />
+<br />
+
+商品コード：
+<span th:text="*{itemCode}" />
+<br />
+
+日付（期間）：
+<span th:text="${#dates.format(sampleForm.dateFrom, 'yyyy/MM/dd')}" />
+-
+<span th:text="${#dates.format(sampleForm.dateTo,'yyyy/MM/dd')}" />
+<br />
+
+期日：
+<span th:text="${selectedPeriod}" /> <span th:text="${#dates.format(sampleForm.dueDate, 'yyyy/MM/dd')}" />
+<br />
+
+コレクションの条件付きバリデーション：<br />
+<table>
+	<tr>
+		<th>No.</th>
+		<th>商品</th>
+		<th>単価</th>
+	</tr>
+	<tr th:each="sampleChildFormList, stat : *{sampleChildFormList}">
+		<td th:text="${stat.count}"></td>
+		<td><span th:text="*{sampleChildFormList[__${stat.index}__].item}" /></td>
+		<td><span th:text="*{sampleChildFormList[__${stat.index}__].price}" /></td>
+	</tr>
+</table>
+<br />
+
+</div>
+</body>
+</html>

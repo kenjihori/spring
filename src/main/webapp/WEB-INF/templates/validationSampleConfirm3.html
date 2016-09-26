@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Bean Validation Sample Confirm 3</h2>
+
+<div th:object="${validationSampleForm3}">
+
+日付（期間）：
+<span th:text="${#dates.format(validationSampleForm3.dateFrom, 'yyyy/MM/dd')}" />
+-
+<span th:text="${#dates.format(validationSampleForm3.dateTo,'yyyy/MM/dd')}" />
+
+</div>
+</body>
+</html>

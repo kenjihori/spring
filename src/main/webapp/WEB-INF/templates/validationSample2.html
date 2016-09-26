@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/css/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Bean Validation Sample 2</h2>
+<form role="form" th:action="@{/validationSample2}" th:object="${validationSampleForm2}" method="post">
+
+商品コード：
+<input type="text" th:field="*{itemCode}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('itemCode')}" th:errors="*{itemCode}" class="fieldErrorMessage"></span>
+<br />
+
+<button type="submit">Confirm</button>
+
+</form>
+</body>
+</html>

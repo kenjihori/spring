@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/css/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Bean Validation Sample</h2>
+<form role="form" th:action="@{/sample}" th:object="${sampleForm}" method="post">
+
+郵便番号：
+<input type="text" id="zipCode" name="zipCode" th:field="*{zipCode}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}" class="fielderrMsg"></span>
+<br />
+
+商品コード：
+<input type="text" th:field="*{itemCode}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('itemCode')}" th:errors="*{itemCode}" class="fielderrMsg"></span>
+<br />
+
+日付（期間）：
+<input type="date" th:field="*{dateFrom}" th:errorclass="fieldError" />
+-
+<input type="date" th:field="*{dateTo}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}" class="fielderrMsg"></span>
+<span th:if="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}" class="fielderrMsg"></span>
+<br />
+
+期日：
+<div>
+<label th:each="item : ${radios}">
+<input type="radio" th:value="${item.key}" th:text="${item.value}" th:field="*{period}" />
+</label>
+<input type="date" id="dueDate" name="dueDate" th:field="*{dueDate}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('period')}" th:errors="*{period}"　class="fielderrMsg">error!</span>
+<span th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"　class="fielderrMsg">error!</span>
+</div>
+
+コレクションの条件付きバリデーション：<br />
+<table>
+	<tr>
+		<th>No.</th>
+		<th>商品</th>
+		<th>単価</th>
+	</tr>
+	<tr th:each="sampleChildFormList, stat : *{sampleChildFormList}">
+		<td th:text="${stat.count}"></td>
+		<td>
+			<input type="text" th:field="*{sampleChildFormList[__${stat.index}__].item}" th:errorclass="fieldError" />
+			<br />
+			<span th:if="${#fields.hasErrors('*{sampleChildFormList[__${stat.index}__].item}')}" 
+				  th:errors="*{sampleChildFormList[__${stat.index}__].item}" class="fielderrMsg"></span>
+		</td>
+		<td>
+			<input type="number" th:field="*{sampleChildFormList[__${stat.index}__].price}" th:errorclass="fieldError" />
+			<br />
+			<span th:if="${#fields.hasErrors('*{sampleChildFormList[__${stat.index}__].price}')}" 
+				  th:errors="*{sampleChildFormList[__${stat.index}__].price}" class="fielderrMsg"></span>
+		</td>
+	</tr>
+</table>
+<br />
+
+<button type="submit">confirm</button>
+
+</form>
+</body>
+</html>

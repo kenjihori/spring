@@ -9,6 +9,6 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 	<typeAliases>
-		<package name="com.mycomp.myapp.domain.model" />
+		<package name="com.mycompany.myapp.domain.model" />
 	</typeAliases>
 </configuration>
