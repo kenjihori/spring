@@ -8,7 +8,8 @@ import javax.validation.constraints.NotNull;
 
 import com.mycompany.myapp.web.validator.DateRange;
 
-public class ValidationForm3 implements Serializable {
+@DateRange(dateFrom = "dateFrom", dateTo = "dateTo")
+public class ValidationForm3a implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -32,16 +33,6 @@ public class ValidationForm3 implements Serializable {
 
     public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
-    }
-    
-    private boolean validDate;
-    
-    @AssertTrue(message = "{invalidDate}")
-    public boolean isValidDate() {
-        if(dateFrom == null) return true;
-        if(dateTo == null) return true;
-        if(dateFrom.compareTo(dateTo) <= 0) return true;
-        return false;
     }
     
 }

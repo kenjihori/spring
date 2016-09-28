@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/css/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Bean Validation Sample 5</h2>
+<form role="form" th:action="@{/validation5}" th:object="${validationForm5}" method="post">
+
+コレクションの条件付きバリデーション：
+<br />
+<table>
+	<tr>
+		<th>No.</th>
+		<th>商品</th>
+		<th>数量</th>
+		<th>単価</th>
+	</tr>
+	<tr th:each="validationForm5ChildList, stat : *{validationForm5ChildList}">
+		<td th:text="${stat.count}"></td>
+		<td>
+			<input type="text" th:field="*{validationForm5ChildList[__${stat.index}__].item}" th:errorclass="fieldError" />
+			<br />
+			<span th:if="${#fields.hasErrors('*{validationForm5ChildList[__${stat.index}__].item}')}" 
+				  th:errors="*{validationForm5ChildList[__${stat.index}__].item}" class="fielderrMsg"></span>
+		</td>
+		<td>
+			<input type="number" th:field="*{validationForm5ChildList[__${stat.index}__].qty}" th:errorclass="fieldError" />
+			<br />
+			<span th:if="${#fields.hasErrors('*{validationForm5ChildList[__${stat.index}__].qty}')}" 
+				  th:errors="*{validationForm5ChildList[__${stat.index}__].qty}" class="fielderrMsg"></span>
+		</td>
+		<td>
+			<input type="number" th:field="*{validationForm5ChildList[__${stat.index}__].price}" th:errorclass="fieldError" />
+			<br />
+			<span th:if="${#fields.hasErrors('*{validationForm5ChildList[__${stat.index}__].price}')}" 
+				  th:errors="*{validationForm5ChildList[__${stat.index}__].price}" class="fielderrMsg"></span>
+		</td>
+	</tr>
+</table>
+<br />
+
+
+
+
+<button type="submit">Confirm</button>
+
+</form>
+</body>
+</html>

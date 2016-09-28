@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>Bean Validation Sample 1</h2>
-<form role="form" th:action="@{/validationSample1}" th:object="${validationSampleForm1}" method="post">
+<form role="form" th:action="@{/validation1}" th:object="${validationForm1}" method="post">
 
 郵便番号：
 <input type="text" th:field="*{zipCode}" th:errorclass="fieldError" />

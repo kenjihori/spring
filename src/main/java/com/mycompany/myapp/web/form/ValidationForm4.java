@@ -3,7 +3,7 @@ package com.mycompany.myapp.web.form;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ValidationSampleForm4 implements Serializable {
+public class ValidationForm4 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

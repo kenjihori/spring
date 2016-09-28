@@ -3,7 +3,7 @@ package com.mycompany.myapp.web.form;
 import java.io.Serializable;
 import com.mycompany.myapp.web.validator.ZipCode;
 
-public class ValidationSampleForm1 implements Serializable {
+public class ValidationForm1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

@@ -6,8 +6,8 @@
 <link th:href="@{/resources/css/style.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h2>Bean Validation Sample 3</h2>
-<form role="form" th:action="@{/validation3}" th:object="${validationForm3}" method="post">
+<h2>Bean Validation Sample 3a</h2>
+<form role="form" th:action="@{/validation3a}" th:object="${validationForm3a}" method="post">
 
 日付（期間）：
 <input type="date" th:field="*{dateFrom}" th:errorclass="fieldError" />
@@ -15,7 +15,6 @@
 <input type="date" th:field="*{dateTo}" th:errorclass="fieldError" />
 <span th:if="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}" class="fieldErrorMessage"></span>
 <span th:if="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}" class="fieldErrorMessage"></span>
-<span th:if="${#fields.hasErrors('validDate')}" th:errors="*{validDate}" class="fieldErrorMessage"></span>
 <br />
 
 <button type="submit">Confirm</button>

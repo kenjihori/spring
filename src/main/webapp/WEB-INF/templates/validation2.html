@@ -7,11 +7,19 @@
 </head>
 <body>
 <h2>Bean Validation Sample 2</h2>
-<form role="form" th:action="@{/validationSample2}" th:object="${validationSampleForm2}" method="post">
+<form role="form" th:action="@{/validation2}" th:object="${validationForm2}" method="post">
 
 商品コード：
 <input type="text" th:field="*{itemCode}" th:errorclass="fieldError" />
 <span th:if="${#fields.hasErrors('itemCode')}" th:errors="*{itemCode}" class="fieldErrorMessage"></span>
+<br />
+
+会社コード - 社員コード：
+<input type="text" th:field="*{companyCode}" th:errorclass="fieldError" />
+-
+<input type="text" th:field="*{employeeCode}" th:errorclass="fieldError" />
+<span th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" class="fieldErrorMessage"></span>
+<span th:if="${#fields.hasErrors('employeeCode')}" th:errors="*{employeeCode}" class="fieldErrorMessage"></span>
 <br />
 
 <button type="submit">Confirm</button>

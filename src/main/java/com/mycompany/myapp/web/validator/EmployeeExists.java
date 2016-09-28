@@ -13,24 +13,24 @@ import javax.validation.ReportAsSingleViolation;
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = {DateRangeValidator.class})
+@Constraint(validatedBy = {EmployeeExistsValidator.class})
 @ReportAsSingleViolation
-public @interface DateRange {
+public @interface EmployeeExists {
 
-    String message() default "{invalidDate}";
+    String message() default "{employee.notexists}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    String dateFrom();
-    String dateTo();
+    String companyCode();
+    String employeeCode();
     
     @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     public static @interface List {
-        DateRange[] value();
+        EmployeeExists[] value();
     }
 
 }

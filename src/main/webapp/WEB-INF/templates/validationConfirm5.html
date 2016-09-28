@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Bean Validation Sample Confirm 5</h2>
+
+<div th:object="${validationForm5}">
+
+コレクションの条件付きバリデーション：<br />
+<table>
+	<tr>
+		<th>No.</th>
+		<th>商品</th>
+		<th>数量</th>
+		<th>単価</th>
+	</tr>
+	<tr th:each="validationForm5ChildList, stat : *{validationForm5ChildList}">
+		<td th:text="${stat.count}"></td>
+		<td><span th:text="*{validationForm5ChildList[__${stat.index}__].item}" /></td>
+		<td><span th:text="*{validationForm5ChildList[__${stat.index}__].qty}" /></td>
+		<td><span th:text="*{validationForm5ChildList[__${stat.index}__].price}" /></td>
+	</tr>
+</table>
+
+
+</div>
+</body>
+</html>

@@ -7,12 +7,12 @@
 <body>
 <h2>Bean Validation Sample Confirm 3</h2>
 
-<div th:object="${validationSampleForm3}">
+<div th:object="${validationForm3}">
 
 日付（期間）：
-<span th:text="${#dates.format(validationSampleForm3.dateFrom, 'yyyy/MM/dd')}" />
+<span th:text="${#dates.format(validationForm3.dateFrom, 'yyyy/MM/dd')}" />
 -
-<span th:text="${#dates.format(validationSampleForm3.dateTo,'yyyy/MM/dd')}" />
+<span th:text="${#dates.format(validationForm3.dateTo,'yyyy/MM/dd')}" />
 
 </div>
 </body>

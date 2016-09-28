@@ -14,7 +14,7 @@ public class ItemService {
     @Autowired
     ItemMapper itemMapper;
 
-    public Item findItem(Integer id) {
+    public Item findItem(String id) {
         return itemMapper.findOne(id);
     }
 

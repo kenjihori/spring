@@ -9,7 +9,7 @@
 	<result column="name" property="name" />
 </resultMap>
 
-<select id="findOne" parameterType="integer" resultMap="itemMap">
+<select id="findOne" parameterType="string" resultMap="itemMap">
 SELECT
 	id,
 	name

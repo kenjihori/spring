@@ -7,10 +7,16 @@
 <body>
 <h2>Bean Validation Sample Confirm 2</h2>
 
-<div th:object="${validationSampleForm2}">
+<div th:object="${validationForm2}">
 
 商品コード：
 <span th:text="*{itemCode}" />
+<br />
+
+会社コード - 社員コード：
+<span th:text="*{companyCode}" />
+-
+<span th:text="*{employeeCode}" />
 
 </div>
 </body>

@@ -19,8 +19,12 @@ public class ItemCodeExistsValidator implements ConstraintValidator<ItemCodeExis
     
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        // 商品マスタより商品を取得
-        Item item = itemService.findItem(Integer.valueOf(value));
+        // 商品コードが入力されていない場合はチェックしない（フォームクラスのNotNullでチェックする）
+        if(value == null) {
+            return true;
+        }
+        // 商品マスタより商品を取得する
+        Item item = itemService.findItem(value);
         // 商品が存在する場合はチェックOK、存在しない場合はチェックNGとする
         if(item != null) {
             return true;

@@ -7,10 +7,6 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.mycompany.myapp.domain.model.Item;
-import com.mycompany.myapp.service.ItemService;
 
 public class DateRangeValidator implements ConstraintValidator<DateRange, Object> {
 
@@ -30,6 +26,8 @@ public class DateRangeValidator implements ConstraintValidator<DateRange, Object
         BeanWrapper beanWrapper = new BeanWrapperImpl(value);
         Date dateFromValue = (Date)beanWrapper.getPropertyValue(dateFrom);
         Date dateToValue = (Date)beanWrapper.getPropertyValue(dateTo);
+        // 日付（開始）、日付（終了）が入力されていない場合はチェックしない（フォームクラスのNotNullでチェックする）
+        // 日付（開始）≦日付（終了）の場合はチェックOK
         if(dateFromValue == null || dateToValue == null || dateFromValue.compareTo(dateToValue) <= 0) {
             return true;
         } else {

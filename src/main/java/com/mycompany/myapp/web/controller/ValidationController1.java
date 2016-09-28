@@ -9,27 +9,27 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycompany.myapp.web.form.ValidationSampleForm1;
+import com.mycompany.myapp.web.form.ValidationForm1;
 
 @Controller
-public class ValidationSampleController1 {
+public class ValidationController1 {
 
-    private static final Logger logger = LoggerFactory.getLogger(ValidationSampleController1.class);
+    private static final Logger logger = LoggerFactory.getLogger(ValidationController1.class);
     
-    @RequestMapping(value = "validationSample1", method = RequestMethod.GET)
-    public String index(ValidationSampleForm1 form, Model model) {
-        return "validationSample1";
+    @RequestMapping(value = "validation1", method = RequestMethod.GET)
+    public String index(ValidationForm1 form, Model model) {
+        return "validation1";
     }
     
-    @RequestMapping(value = "validationSample1", method = RequestMethod.POST)
-    public String confirm(@Validated ValidationSampleForm1 form, BindingResult bindingResult, Model model) {
+    @RequestMapping(value = "validation1", method = RequestMethod.POST)
+    public String confirm(@Validated ValidationForm1 form, BindingResult bindingResult, Model model) {
         // 入力チェックエラーがある場合は入力画面に戻る
         if (bindingResult.hasErrors()) {
-            return "validationSample1";
+            return "validation1";
         }
         // 入力チェックエラーがない場合は確認画面に遷移する
-        model.addAttribute("validationSampleForm1", form);
-        return "validationSampleConfirm1";
+        model.addAttribute("validationForm1", form);
+        return "validationConfirm1";
     }
 
 }

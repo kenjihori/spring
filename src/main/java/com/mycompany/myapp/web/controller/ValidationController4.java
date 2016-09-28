@@ -20,16 +20,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycompany.myapp.web.form.ValidationSampleForm4;
-import com.mycompany.myapp.web.validator.ValidationSampleFormValidator4;
+import com.mycompany.myapp.web.form.ValidationForm4;
+import com.mycompany.myapp.web.validator.Validator4;
 
 @Controller
-public class ValidationSampleController4 {
+public class ValidationController4 {
 
-    private static final Logger logger = LoggerFactory.getLogger(ValidationSampleController4.class);
+    private static final Logger logger = LoggerFactory.getLogger(ValidationController4.class);
     
     @Autowired
-    ValidationSampleFormValidator4 validationSampleFormValidator4;
+    Validator4 validator4;
+    
+    @InitBinder
+    public void validatorBinder(WebDataBinder binder) {
+        binder.addValidators(validator4);
+    }
     
     @InitBinder
     public void dateBinder(WebDataBinder binder) {
@@ -48,23 +53,22 @@ public class ValidationSampleController4 {
         });
     }
     
-    @RequestMapping(value = "validationSample4", method = RequestMethod.GET)
-    public String index(ValidationSampleForm4 form, Model model) {
-        return "validationSample4";
+    @RequestMapping(value = "validation4", method = RequestMethod.GET)
+    public String index(ValidationForm4 form, Model model) {
+        return "validation4";
     }
     
-    @RequestMapping(value = "validationSample4", method = RequestMethod.POST)
-    public String confirm(@Validated ValidationSampleForm4 form, BindingResult bindingResult, Model model) {
-        // カスタムのバリデータを呼び出す
-        validationSampleFormValidator4.validate(form, bindingResult);
+    @RequestMapping(value = "validation4", method = RequestMethod.POST)
+    public String confirm(@Validated ValidationForm4 form, BindingResult bindingResult, Model model) {
         // 入力チェックエラーがある場合は入力画面に戻る
         if (bindingResult.hasErrors()) {
-            return "validationSample4";
+            return "validation4";
         }
         // 入力チェックエラーがない場合は確認画面に遷移する
-        model.addAttribute("validationSampleForm4", form);
-        model.addAttribute("selectedPeriod", radioList().get(form.getPeriod())); //ラジオボタンの表示名
-        return "validationSampleConfirm4";
+        model.addAttribute("validationForm4", form);
+        //ラジオボタンの表示名を設定
+        model.addAttribute("selectedPeriod", radioList().get(form.getPeriod())); 
+        return "validationConfirm4";
     }
 
 }

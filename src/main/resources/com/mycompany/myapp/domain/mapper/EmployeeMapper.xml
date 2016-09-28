@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.myapp.domain.mapper.EmployeeMapper">
+
+<resultMap id="employeeMap" type="Employee">
+	<id column="company_code" property="companyCode" />
+	<id column="employee_code" property="employeeCode" />
+	<result column="employee_name" property="employeeName" />
+</resultMap>
+
+<select id="findOne" resultMap="employeeMap">
+SELECT
+	company_code,
+	employee_code,
+	employee_name
+FROM
+	employee
+WHERE
+	company_code = #{companyCode} and
+	employee_code = #{employeeCode}
+</select>
+
+</mapper>

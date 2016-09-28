@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mycompany.myapp.web.form.ValidationForm3;
 
 @Controller
-public class ValidationController3 {
+public class ValidationController3a {
 
-    private static final Logger logger = LoggerFactory.getLogger(ValidationController3.class);
+    private static final Logger logger = LoggerFactory.getLogger(ValidationController3a.class);
     
     @InitBinder
     public void dateBinder(WebDataBinder binder) {
@@ -29,20 +29,20 @@ public class ValidationController3 {
         binder.registerCustomEditor(Date.class, editor);
     }
     
-    @RequestMapping(value = "validation3", method = RequestMethod.GET)
+    @RequestMapping(value = "validation3a", method = RequestMethod.GET)
     public String index(ValidationForm3 form, Model model) {
-        return "validation3";
+        return "validation3a";
     }
     
-    @RequestMapping(value = "validation3", method = RequestMethod.POST)
+    @RequestMapping(value = "validation3a", method = RequestMethod.POST)
     public String confirm(@Validated ValidationForm3 form, BindingResult bindingResult, Model model) {
         // 入力チェックエラーがある場合は入力画面に戻る
         if (bindingResult.hasErrors()) {
             return "validation3";
         }
         // 入力チェックエラーがない場合は確認画面に遷移する
-        model.addAttribute("validationForm3", form);
-        return "validationConfirm3";
+        model.addAttribute("validationForm3a", form);
+        return "validationConfirm3a";
     }
 
 }

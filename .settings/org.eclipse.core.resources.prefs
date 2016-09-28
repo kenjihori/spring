@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/mycompany/myapp/web/controller/SampleController.java=UTF-8
-encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationSampleController1.java=UTF-8
-encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationSampleController2.java=UTF-8
-encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationSampleController3.java=UTF-8
-encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationSampleController4.java=UTF-8
+encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationController1.java=UTF-8
+encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationController2.java=UTF-8
+encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationController3.java=UTF-8
+encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationController3a.java=UTF-8
+encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationController4.java=UTF-8
+encoding//src/main/java/com/mycompany/myapp/web/controller/ValidationController5.java=UTF-8
