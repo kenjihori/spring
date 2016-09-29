@@ -8,14 +8,14 @@ public class ValidationForm5 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    private List<ValidationForm5Child> validationSampleForm5ChildList;
+    private List<ValidationForm5Child> validationForm5ChildList;
 
-    public List<ValidationForm5Child> getValidationSampleForm5ChildList() {
-        return validationSampleForm5ChildList;
+    public List<ValidationForm5Child> getValidationForm5ChildList() {
+        return validationForm5ChildList;
     }
 
-    public void setValidationSampleForm5ChildList(List<ValidationForm5Child> validationSampleForm5ChildList) {
-        this.validationSampleForm5ChildList = validationSampleForm5ChildList;
+    public void setValidationForm5ChildList(List<ValidationForm5Child> validationForm5ChildList) {
+        this.validationForm5ChildList = validationForm5ChildList;
     }
     
 }

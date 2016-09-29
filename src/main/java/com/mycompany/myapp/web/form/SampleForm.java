@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.mycompany.myapp.web.validator.DateRange;
-import com.mycompany.myapp.web.validator.ItemCodeExists;
+import com.mycompany.myapp.web.validator.ItemExists;
 import com.mycompany.myapp.web.validator.ZipCode;
 
 @DateRange(dateFrom = "dateFrom", dateTo = "dateTo")
@@ -20,7 +20,7 @@ public class SampleForm implements Serializable {
     @ZipCode
     private String zipCode;
 
-    @ItemCodeExists
+    @ItemExists
     private String itemCode;
     
     @NotNull(message = "{dateFrom.notnull}")

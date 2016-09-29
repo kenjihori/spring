@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mycompany.myapp.domain.model.Item;
 import com.mycompany.myapp.service.ItemService;
 
-public class ItemCodeExistsValidator implements ConstraintValidator<ItemCodeExists, String> {
+public class ItemExistsValidator implements ConstraintValidator<ItemExists, String> {
 
     @Autowired
     ItemService itemService;
     
     @Override
-    public void initialize(ItemCodeExists annotation) {
+    public void initialize(ItemExists annotation) {
     }
     
     @Override

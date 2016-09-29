@@ -40,6 +40,7 @@ public class ValidationController5 {
         for(int i=0; i<5; i++) {
             validationForm5ChildList.add(new ValidationForm5Child());
         }
+        form.setValidationForm5ChildList(validationForm5ChildList);
         return form;
     }
     

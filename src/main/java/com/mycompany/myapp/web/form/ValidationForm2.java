@@ -2,15 +2,18 @@ package com.mycompany.myapp.web.form;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import com.mycompany.myapp.web.validator.EmployeeExists;
-import com.mycompany.myapp.web.validator.ItemCodeExists;
+import com.mycompany.myapp.web.validator.ItemExists;
 
 @EmployeeExists(companyCode = "companyCode", employeeCode = "employeeCode")
 public class ValidationForm2 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    @ItemCodeExists
+    @NotNull
+    @ItemExists
     private String itemCode;
 
     public String getItemCode() {

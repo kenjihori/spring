@@ -17,7 +17,7 @@ import javax.validation.ReportAsSingleViolation;
 @ReportAsSingleViolation
 public @interface EmployeeExists {
 
-    String message() default "{employee.notexists}";
+    String message() default "{employeeexists}";
 
     Class<?>[] groups() default {};
 

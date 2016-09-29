@@ -14,10 +14,10 @@
 <span th:if="${#fields.hasErrors('itemCode')}" th:errors="*{itemCode}" class="fieldErrorMessage"></span>
 <br />
 
-会社コード - 社員コード：
-<input type="text" th:field="*{companyCode}" th:errorclass="fieldError" />
+会社コード - 社員コード （複合キーのケース）：
+<input type="text" th:field="*{companyCode}" th:errorclass="fieldError" size="3" />
 -
-<input type="text" th:field="*{employeeCode}" th:errorclass="fieldError" />
+<input type="text" th:field="*{employeeCode}" th:errorclass="fieldError" size="5" />
 <span th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" class="fieldErrorMessage"></span>
 <span th:if="${#fields.hasErrors('employeeCode')}" th:errors="*{employeeCode}" class="fieldErrorMessage"></span>
 <br />

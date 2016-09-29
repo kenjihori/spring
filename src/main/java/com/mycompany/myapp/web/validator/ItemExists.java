@@ -13,11 +13,11 @@ import javax.validation.ReportAsSingleViolation;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = {ItemCodeExistsValidator.class})
+@Constraint(validatedBy = {ItemExistsValidator.class})
 @ReportAsSingleViolation
-public @interface ItemCodeExists {
+public @interface ItemExists {
 
-    String message() default "{itemcode.notexists}";
+    String message() default "{itemexists}";
 
     Class<?>[] groups() default {};
 
@@ -27,7 +27,7 @@ public @interface ItemCodeExists {
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     public static @interface List {
-        ItemCodeExists[] value();
+        ItemExists[] value();
     }
 
 }
