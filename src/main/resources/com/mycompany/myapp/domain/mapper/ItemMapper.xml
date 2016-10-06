@@ -7,16 +7,51 @@
 <resultMap id="itemMap" type="Item">
 	<id column="id" property="id" />
 	<result column="name" property="name" />
+	<result column="created_by_id" property="createdById" />
+	<result column="created_timestamp" property="createdTimestamp" />
+	<result column="updated_by_id" property="updatedById" />
+	<result column="updated_timestamp" property="updatedTimestamp" />
 </resultMap>
 
 <select id="findOne" parameterType="string" resultMap="itemMap">
 SELECT
 	id,
-	name
+	name,
+	created_by_id,
+	created_timestamp,
+	updated_by_id,
+	updated_timestamp
 FROM
 	item
 WHERE
 	id = #{id}
 </select>
+
+<insert id="createItem" parameterType="Item">
+INSERT INTO item (
+	id,
+	name,
+	created_by_id,
+	created_timestamp,
+	updated_by_id,
+	updated_timestamp
+) VALUES (
+	#{id},
+	#{name},
+	#{createdById},
+	#{createdTimestamp},
+	#{updatedById},
+	#{updatedTimestamp}
+)
+</insert>
+
+<update id="updateItem" parameterType="Item">
+UPDATE item SET 
+	name = #{name},
+	updated_by_id = #{updatedById},
+	updated_timestamp = #{updatedTimestamp}
+WHERE
+	id = #{id}
+</update>
 
 </mapper>

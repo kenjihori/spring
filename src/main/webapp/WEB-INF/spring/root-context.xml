@@ -31,6 +31,9 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven validator="validator">
+		<mvc:argument-resolvers>
+			<beans:bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver" />
+		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
 	<context:component-scan base-package="com.mycompany.myapp" />

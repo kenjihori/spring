@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans:beans 
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <sec:http>
+        <sec:form-login 
+        	login-page="/login" 
+        	username-parameter="username"
+        	password-parameter="password"
+        	default-target-url="/item"
+        	always-use-default-target="true" />
+        <sec:intercept-url pattern="/login" access="permitAll" />
+        <sec:intercept-url pattern="/validation*" access="permitAll" />
+        <sec:intercept-url pattern="/**" access="isAuthenticated()" />
+		<sec:remember-me
+			remember-me-cookie="remember-me"
+			remember-me-parameter="_spring_security_remember_me"
+			token-validity-seconds="#{7*24*60*60}"
+			use-secure-cookie="false" />
+    </sec:http>
+    
+ 	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<beans:bean id="loginComponent"
+		class="com.mycompany.myapp.common.security.LoginComponent" />
+    <sec:authentication-manager>
+    	<sec:authentication-provider user-service-ref="loginComponent">
+    		<sec:password-encoder ref="passwordEncoder" />
+    	</sec:authentication-provider>
+    </sec:authentication-manager>
+    
+</beans:beans>

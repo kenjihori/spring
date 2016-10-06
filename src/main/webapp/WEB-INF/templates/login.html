@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>ログイン画面</h2>
+
+<form th:action="@{/login}" method="post">
+
+<div class="alert alert-danger" role="alert" th:if="${param.error}">There was an error, please try again</div>
+<br />
+
+<p th:if="${loginError}">Wrong user or password</p>
+<br />
+
+<p th:if="${loginError}" th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" th:text="${errorMsg}">spring security errror message</p>
+<br />
+
+ ユーザー名：
+<input type="text" id="username" name="username" />
+<br />
+
+パスワード：
+<input type="password" id="password" name="password" />
+<br />
+
+<input type="checkbox" id="_spring_security_remember_me" name="_spring_security_remember_me" /> ログイン情報を記憶する
+<br />
+
+<button type="submit">ログイン</button>
+
+</form>
+</body>
+</html>

@@ -17,5 +17,13 @@ public class ItemService {
     public Item findItem(String id) {
         return itemMapper.findOne(id);
     }
+    
+    public void createItem(Item item) {
+        itemMapper.createItem(item);
+    }
+    
+    public void updateItem(Item item) {
+        itemMapper.updateItem(item);
+    }
 
 }
